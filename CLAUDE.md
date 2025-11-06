@@ -590,4 +590,128 @@ All changes implemented and tested. The notebook should now:
 - Filter out FOD=0 properly
 - Track CIP4 names throughout
 - Generate comprehensive diagnostic reports
-- Produce labeled outputs for analysis 
+- Produce labeled outputs for analysis
+
+---
+
+## Phase 9: Tercile Deep-Dive Visualization (Nov 6, 2025 - Session 2 continued)
+
+### New Visualization Added
+
+**Function**: `create_tercile_deepdive_plots()`
+
+Creates a detailed 3-panel visualization showing enrollment trends for the top 10 most popular majors within each AI exposure tercile (Low/Medium/High).
+
+### What It Shows
+
+**Layout**: 1 row × 3 columns (side-by-side comparison)
+- **Panel 1 (Left)**: Low AI Exposure - Top 10 majors
+- **Panel 2 (Center)**: Medium AI Exposure - Top 10 majors
+- **Panel 3 (Right)**: High AI Exposure - Top 10 majors
+
+**For Each Panel**:
+1. **Top 10 CIP4 codes** by 2019 enrollment within that tercile
+2. **Enrollment trends** (2019-2025) normalized to 2019 = 100%
+3. **Line labels**: "CIP4: Title" (e.g., "5138: Registered Nursing...")
+4. **Coverage annotation**: Shows what % of tercile enrollment these top 10 represent
+5. **Sample size**: Shows N students in top 10 (2019)
+6. **ChatGPT launch line**: Vertical red dashed line at 2022.5
+7. **Baseline reference**: Horizontal gray dotted line at 100%
+
+### Example Output Annotation
+```
+Top 10: 67.3% of tercile
+N = 2,456,789 (2019)
+```
+
+### Why This Visualization Matters
+
+**Granularity**:
+- The 4-panel overview shows aggregate tercile trends
+- This deep-dive shows WHICH specific majors are driving those trends
+
+**Coverage Transparency**:
+- Tells you how representative the top 10 are
+- If top 10 = 80%+ coverage, you're seeing most of the story
+- If top 10 = 40% coverage, tercile is more fragmented
+
+**Interpretability**:
+- CIP4 labels make it clear what you're looking at
+- No need to cross-reference code tables
+- Easy to identify outliers or interesting patterns
+
+**Hypothesis Generation**:
+- See which majors are growing/declining within each tercile
+- Identify heterogeneity within terciles
+- Spot majors that buck the trend
+
+### Technical Implementation
+
+**File Output**:
+- **Filename**: `enrollment_tercile_deepdive.png`
+- **Location**: Same as other outputs (`OUTPUT_DIR`)
+- **Resolution**: 300 DPI, high quality
+- **Size**: 20" × 6" (wide format to fit 3 panels + legends)
+
+**Styling Details**:
+- 10 distinct colors (tab10 colormap)
+- Line markers ('o') for clarity
+- Legends positioned below each subplot (to avoid occlusion)
+- Font sizes optimized for readability
+- Grid for easy value reading
+
+**Data Processing**:
+- Filters to rows with valid tercile assignment (`notna()`)
+- Gets 2019 baseline for each tercile
+- Identifies top 10 CIP4s by enrollment
+- Normalizes each CIP4 trend to its own 2019 baseline
+- Truncates long titles to 30 characters (+ "...")
+
+### Usage
+
+The function is automatically called in `main()`:
+```python
+# Step 8B: Create tercile deep-dive plots
+create_tercile_deepdive_plots(df_final, f'{OUTPUT_DIR}/enrollment_tercile_deepdive.png')
+```
+
+### Interpreting the Output
+
+**High Coverage (70%+)**:
+- Top 10 dominate the tercile
+- Trends are driven by a few large majors
+- Changes in these 10 explain most tercile movement
+
+**Medium Coverage (50-70%)**:
+- Top 10 are important but not dominant
+- Other majors contribute significantly
+- More diversity within tercile
+
+**Low Coverage (<50%)**:
+- Tercile is fragmented
+- No clear "mega-majors"
+- Trends reflect many small programs
+
+**Trend Patterns to Look For**:
+- **Divergence**: If top 10 trends diverge, tercile aggregate hides heterogeneity
+- **Convergence**: If all move together, tercile trend is robust
+- **Outliers**: If 1-2 majors buck the trend, investigate why
+- **Pre/Post 2022**: Compare slopes before/after ChatGPT launch
+
+### Notes
+
+**CIP4 Title Source**:
+- Titles come from enrollment Excel files (official NSC names)
+- Manual mapping titles in `MANUAL_MAPPINGS` are for documentation only
+- Enrollment titles overwrite/supplement crosswalk titles
+
+**Performance**:
+- Fast execution (filters to top 10 only)
+- No expensive computations
+- Legends may be crowded with 10 lines (but readable at fontsize=8)
+
+**Future Enhancements** (not implemented):
+- Interactive version with hover tooltips
+- Separate by 2-year vs 4-year institutions
+- Show absolute enrollment alongside % change
+- Highlight specific majors of interest 
