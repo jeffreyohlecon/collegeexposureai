@@ -52,9 +52,21 @@ also do a git commit at the end please
   - ✓ ACS PUMS data (556MB)
   - ✓ Both enrollment files (2024: 1.3MB, 2025: 1.0MB)
 
+### Additional Fixes (Post-Testing)
+4. **Fixed CIP4 matching issue**:
+   - Enrollment Excel files have 6-digit CIP codes (e.g., "010000"), not 4-digit
+   - Changed extraction to use first 4 characters: `str(cip4)[:4]`
+   - Exposure CSV was converting strings to integers (100 instead of "0100")
+   - Added CIP4 normalization in merge function: both converted to zero-padded 4-char strings
+5. **Added error handling for tercile creation**:
+   - Added try-except around pd.qcut() to handle edge cases
+   - Falls back to pd.cut() if qcut fails due to insufficient unique values
+
 ### Notebook is Now Ready
-- All syntax errors fixed
-- All file paths corrected
-- Real data loading implemented (no dummy data)
-- Proper handling of Excel merged headers
-- Ready to process 4-digit CIP codes with real AI exposure scores 
+- All syntax errors fixed ✓
+- All file paths corrected ✓
+- Real data loading implemented (no dummy data) ✓
+- Proper handling of Excel merged headers ✓
+- CIP4 code matching fixed (6-digit → 4-digit extraction + normalization) ✓
+- Error handling for edge cases ✓
+- **Tested and working with real data** ✓ 
