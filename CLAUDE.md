@@ -228,7 +228,7 @@ Added two reports:
 **(ii) CIP4 codes with enrollment but no FOD mapping**:
 - Shows which CIP4 codes have students but no exposure data
 - Reports 2019 enrollment counts
-- Top 10 unmapped majors by enrollment
+- Top 5 unmapped majors by enrollment
 
 ---
 
@@ -600,28 +600,41 @@ All changes implemented and tested. The notebook should now:
 
 **Function**: `create_tercile_deepdive_plots()`
 
-Creates a detailed 3-panel visualization showing enrollment trends for the top 10 most popular majors within each AI exposure tercile (Low/Medium/High).
+Creates a detailed 3-panel visualization showing enrollment trends for the top 5 most popular majors within each AI exposure tercile (Low/Medium/High).
 
 ### What It Shows
 
 **Layout**: 1 row × 3 columns (side-by-side comparison)
-- **Panel 1 (Left)**: Low AI Exposure - Top 10 majors
-- **Panel 2 (Center)**: Medium AI Exposure - Top 10 majors
-- **Panel 3 (Right)**: High AI Exposure - Top 10 majors
+- **Panel 1 (Left)**: Low AI Exposure - Top 5 majors
+- **Panel 2 (Center)**: Medium AI Exposure - Top 5 majors
+- **Panel 3 (Right)**: High AI Exposure - Top 5 majors
 
 **For Each Panel**:
-1. **Top 10 CIP4 codes** by 2019 enrollment within that tercile
+1. **Top 5 CIP4 codes** by 2019 enrollment within that tercile
 2. **Enrollment trends** (2019-2025) normalized to 2019 = 100%
 3. **Line labels**: "CIP4: Title" (e.g., "5138: Registered Nursing...")
-4. **Coverage annotation**: Shows what % of tercile enrollment these top 10 represent
-5. **Sample size**: Shows N students in top 10 (2019)
-6. **ChatGPT launch line**: Vertical red dashed line at 2022.5
-7. **Baseline reference**: Horizontal gray dotted line at 100%
+4. **2025 labels**: Actual enrollment number at final data point (e.g., "490,819")
+5. **2023 labels**: AI exposure score (e.g., "AI: 0.645")
+6. **Coverage annotation**: Shows what % of tercile enrollment these top 5 represent
+7. **Sample size**: Shows N students in top 5 (2019)
+8. **ChatGPT launch line**: Vertical red dashed line at 2022.5
+9. **Baseline reference**: Horizontal gray dotted line at 100%
 
-### Example Output Annotation
+### Example Output Annotations
+**Coverage box** (top left of each panel):
 ```
-Top 10: 67.3% of tercile
+Top 5: 67.3% of tercile
 N = 2,456,789 (2019)
+```
+
+**2025 data point labels** (actual enrollment):
+```
+490,819   (in white box with colored border)
+```
+
+**2023 data point labels** (AI exposure):
+```
+AI: 0.645   (in light yellow box, italic)
 ```
 
 ### Why This Visualization Matters
@@ -631,9 +644,9 @@ N = 2,456,789 (2019)
 - This deep-dive shows WHICH specific majors are driving those trends
 
 **Coverage Transparency**:
-- Tells you how representative the top 10 are
-- If top 10 = 80%+ coverage, you're seeing most of the story
-- If top 10 = 40% coverage, tercile is more fragmented
+- Tells you how representative the top 5 are
+- If top 5 = 80%+ coverage, you're seeing most of the story
+- If top 5 = 40% coverage, tercile is more fragmented
 
 **Interpretability**:
 - CIP4 labels make it clear what you're looking at
@@ -663,7 +676,7 @@ N = 2,456,789 (2019)
 **Data Processing**:
 - Filters to rows with valid tercile assignment (`notna()`)
 - Gets 2019 baseline for each tercile
-- Identifies top 10 CIP4s by enrollment
+- Identifies top 5 CIP4s by enrollment
 - Normalizes each CIP4 trend to its own 2019 baseline
 - Truncates long titles to 30 characters (+ "...")
 
@@ -678,12 +691,12 @@ create_tercile_deepdive_plots(df_final, f'{OUTPUT_DIR}/enrollment_tercile_deepdi
 ### Interpreting the Output
 
 **High Coverage (70%+)**:
-- Top 10 dominate the tercile
+- Top 5 dominate the tercile
 - Trends are driven by a few large majors
-- Changes in these 10 explain most tercile movement
+- Changes in these 5 explain most tercile movement
 
 **Medium Coverage (50-70%)**:
-- Top 10 are important but not dominant
+- Top 5 are important but not dominant
 - Other majors contribute significantly
 - More diversity within tercile
 
@@ -693,7 +706,7 @@ create_tercile_deepdive_plots(df_final, f'{OUTPUT_DIR}/enrollment_tercile_deepdi
 - Trends reflect many small programs
 
 **Trend Patterns to Look For**:
-- **Divergence**: If top 10 trends diverge, tercile aggregate hides heterogeneity
+- **Divergence**: If top 5 trends diverge, tercile aggregate hides heterogeneity
 - **Convergence**: If all move together, tercile trend is robust
 - **Outliers**: If 1-2 majors buck the trend, investigate why
 - **Pre/Post 2022**: Compare slopes before/after ChatGPT launch
@@ -706,9 +719,15 @@ create_tercile_deepdive_plots(df_final, f'{OUTPUT_DIR}/enrollment_tercile_deepdi
 - Enrollment titles overwrite/supplement crosswalk titles
 
 **Performance**:
-- Fast execution (filters to top 10 only)
+- Fast execution (filters to top 5 only)
 - No expensive computations
-- Legends may be crowded with 10 lines (but readable at fontsize=8)
+- Legends are clean with only 5 lines (fontsize=9, very readable)
+
+**Label Details**:
+- 2025 enrollment numbers: White boxes with colored borders, bold text
+- 2023 AI exposure scores: Light yellow boxes, italic text
+- Smart vertical offset: Labels spread vertically to avoid overlap
+- Offsets: ±16, ±8, 0 points for top 5 (i=0,1,2,3,4)
 
 **Future Enhancements** (not implemented):
 - Interactive version with hover tooltips
