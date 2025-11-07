@@ -91,20 +91,14 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
         print("DiD REGRESSION RESULTS (Weighted Least Squares)")
         print("="*70)
 
-        # Specification 1: Basic DiD (no wage controls)
-        print("\n[1] BASIC DiD: log(enrollment) ~ treat × post + year FE")
+        # Specification 1: Basic DiD (no wage controls, no year FE)
+        print("\n[1] BASIC DiD: log(enrollment) ~ treat × post")
         print("    Weights: enrollment (larger majors weighted more heavily)")
         print("-" * 70)
 
-        # Create year dummies
+        # Build formula (no year FE)
         df_did_reg = df_did.copy()
-        for year in df_did_reg['year'].unique():
-            if year != 2019:  # Omit 2019 as base year
-                df_did_reg[f'year_{year}'] = (df_did_reg['year'] == year).astype(int)
-
-        # Build formula
-        year_dummies = ' + '.join([f'year_{y}' for y in sorted(df_did_reg['year'].unique()) if y != 2019])
-        formula_basic = f'log_enrollment ~ treat + post + treat_x_post + {year_dummies}'
+        formula_basic = f'log_enrollment ~ treat + post + treat_x_post'
 
         # Run WLS regression
         model_basic = wls(formula_basic, data=df_did_reg, weights=df_did_reg['enrollment']).fit()
@@ -126,24 +120,19 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
         print("="*70)
 
         # Specification 2: DiD with wage controls
-        print("\n\n[2] WAGE-CONTROLLED DiD: log(enrollment) ~ treat × post + wage quartiles + year FE")
+        print("\n\n[2] WAGE-CONTROLLED DiD: log(enrollment) ~ treat × post + wage quartiles")
         print("    Weights: enrollment")
         print("    Sample: Only majors with wage data")
         print("-" * 70)
 
         # Create wage quartile dummies
         df_wage_reg = df_did_wage.copy()
-        for year in df_wage_reg['year'].unique():
-            if year != 2019:
-                df_wage_reg[f'year_{year}'] = (df_wage_reg['year'] == year).astype(int)
-
         for quartile in ['Q2', 'Q3', 'Q4']:  # Omit Q1 as base
             df_wage_reg[f'wage_{quartile}'] = (df_wage_reg['wage_quartile'] == quartile).astype(int)
 
-        # Build formula with wage controls
+        # Build formula with wage controls (no year FE)
         wage_dummies = ' + '.join([f'wage_{q}' for q in ['Q2', 'Q3', 'Q4']])
-        year_dummies_wage = ' + '.join([f'year_{y}' for y in sorted(df_wage_reg['year'].unique()) if y != 2019])
-        formula_wage = f'log_enrollment ~ treat + post + treat_x_post + {wage_dummies} + {year_dummies_wage}'
+        formula_wage = f'log_enrollment ~ treat + post + treat_x_post + {wage_dummies}'
 
         # Run WLS regression with wage controls
         model_wage = wls(formula_wage, data=df_wage_reg, weights=df_wage_reg['enrollment']).fit()
@@ -176,6 +165,58 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
 
         results.to_csv(f'{output_dir}/did_results.csv', index=False)
         print(f"\n✓ Saved DiD results to {output_dir}/did_results.csv")
+
+        # Specification 3: DiD on Year-over-Year Growth Rates
+        print("\n\n[3] GROWTH RATE DiD: YoY enrollment growth ~ treat × post + log(wage)")
+        print("    Weights: enrollment")
+        print("    Outcome: Year-over-year % growth rate")
+        print("    Control: Log 2019 wage level")
+        print("-" * 70)
+
+        # Calculate YoY growth rates
+        df_growth = df_did_wage.sort_values(['CIP4', 'year']).copy()  # Use wage sample
+        df_growth['enrollment_lag'] = df_growth.groupby('CIP4')['enrollment'].shift(1)
+        df_growth['growth_rate'] = ((df_growth['enrollment'] - df_growth['enrollment_lag']) /
+                                     df_growth['enrollment_lag'] * 100)
+
+        # Drop 2019 (no prior year to calculate growth)
+        df_growth = df_growth[df_growth['year'] > 2019].copy()
+
+        # Redefine post (now 2025 vs 2020-2024)
+        df_growth['post'] = (df_growth['year'] == 2025).astype(int)
+        df_growth['treat_x_post'] = df_growth['treat'] * df_growth['post']
+
+        # Build formula with log wage control (no year FE)
+        formula_growth = f'growth_rate ~ treat + post + treat_x_post + log_mean_wage_2019'
+
+        # Run WLS on growth rates (weight by enrollment)
+        model_growth = wls(formula_growth, data=df_growth, weights=df_growth['enrollment']).fit()
+
+        print(model_growth.summary())
+
+        # Extract DiD coefficient
+        did_coef_growth = model_growth.params['treat_x_post']
+        did_se_growth = model_growth.bse['treat_x_post']
+        did_pval_growth = model_growth.pvalues['treat_x_post']
+
+        print("\n" + "="*70)
+        print(f"GROWTH RATE DiD ESTIMATE (High vs Low Exposure):")
+        print(f"  Coefficient: {did_coef_growth:.4f} percentage points")
+        print(f"  Std Error: {did_se_growth:.4f}")
+        print(f"  P-value: {did_pval_growth:.4f}")
+        print(f"  Interpretation: High AI exposure majors had {did_coef_growth:.2f} percentage point")
+        print(f"                  higher YoY growth in 2025 vs 2020-2024")
+        print("="*70)
+
+        # Add to results
+        results = pd.concat([results, pd.DataFrame({
+            'specification': ['Growth Rate DiD'],
+            'coefficient': [did_coef_growth],
+            'std_error': [did_se_growth],
+            'p_value': [did_pval_growth],
+            'n_obs': [len(df_growth)],
+            'n_majors': [df_growth['CIP4'].nunique()]
+        })], ignore_index=True)
 
         return results
 
