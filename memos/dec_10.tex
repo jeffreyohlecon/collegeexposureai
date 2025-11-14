@@ -55,7 +55,7 @@ For example, in 2016, AI researcher Geoffrey Hinton, who would go on to win the 
 \textbf{Classes of Questions}
 \begin{itemize}
 \item Are AI-exposed education fields suffering a decline or deceleration in enrollment since the launch of ChatGPT? \textbf{Evidence today.}
-\item If so, is this an ex post reaction to AI-induced decline in hiring/wages, or primarily about \textit{ex ante expectations} about future automation risk?
+\item If so, to what extent is this an ex post reaction to declines in hiring/wages vs. \textit{ex ante expectations} about future automation risk?
 \begin{itemize}
 \item For example, we might find that the slowdown in computer science enrollment is a reaction to labor market deterioration, whereas the shortage in radiology was induced by medical students moving away from a field they expected to be automated. 
 \end{itemize}
@@ -68,7 +68,7 @@ For example, in 2016, AI researcher Geoffrey Hinton, who would go on to win the 
 This idea is in the air among economists:  \citep{brynjolfsson2025canaries} released a paper on declining headcount of early career software developers and customer service employees since ChatGPT was launched.   In the conclusion, they speculate that ``The adoption of new technologies typically leads to heterogeneous effects across workers, resulting in an adjustment period as workers reallocate from displaced forms of work to new forms with growing labor demand (Autor et al., 2024). \textbf{ Such endogenous adjustment may already be happening with AI, with emerging evidence of shifts in college majors away from AI-exposed categories such
 as computer science.}''
 \section{Literature}
-
+\textcolor{red}{May skip this.}
 \subsection{College Major Choice Broadly}
 Altonji et al Handbook chapter (2016)
 Missing Manual, Dynarski et al, NBER WP (2013)
@@ -83,19 +83,22 @@ Timmerman, 2025 \\ \href{https://www.federalreserve.gov/econres/notes/feds-notes
 Combining Human Expertise with Artificial Intelligence:
 Experimental Evidence from Radiology \\ 
 
-\section{Data on College Major}
-Ideally want very up-to-date college major choice. The premium is on recency rather than micro data, I think.  I'll say what I did first, then what else is out there.
 
-\section{Sational Student Clearinghouse (NSC)}
-Many papers use this. It is reported at about a 6-month lag at the state-major level.  
+\section{National Student Clearinghouse (NSC)}
+This is the data I use on college major enrollments. It is self-reported by colleges representing 97\% of enrollment. Colleges participate in NSC voluntarily to save administrative costs by outsourcing thousands of enrollment and degree verification requests to loan servicers, employers, and other entities. Accuracy is incentivized because errors create immediate operational problems (students incorrectly placed in loan repayment, failed background checks) that generate complaints and manual work, eliminating the cost savings.\\
 
 
-\subsection{Decomposing a change in enrollment from $t$ to $t+1$}
-We will be interested in changes in a major over time $\Delta_{m,t\to t+1} = Enrollments_{m,t+1} - Enrollments_{m,t}$.
+ The publicly available data are reported 45 days after start and finish of school semesters, at the state-major level. For all of my analyses, I am aggregating to the major level. 
 
+% \subsection{Micro Data}
+% I am not  sure that I need this, although literally aggregating to the year-level, like I am doing now seems too coarse; we're talking basically 5 datapoints (for each major). Seeing it at the institution level would be cool (E.g. are people just dropping CS majors at good colleges). For about \$1000 they will give you enrollment data for any list of students. But as far as I can tell, there is no prodcut for just ``all students''.
 
-In principle, this can come from:
+\section{Analyses}
+\subsection{Caveat on data}
+\subsection{A change in enrollment from $t$ to $t+1$}
+One issue with the data currently, is it is a \textbf{stock} of people across all years majoring in each earea. I am primarily interested in \textbf{flows}, though, i.e. people declaring a major in year $t$.
 
+Consider a decline in the total people majoring in Computer Science, I cannot distinguish between the following. 
 \begin{itemize}
 \item Existing majors: People in that major could have left Computer Science (and either switched to another major or dropped out)
 \item More people graduated with that degree than declared that major 
@@ -105,44 +108,18 @@ In principle, this can come from:
 \end{itemize}
 \end{itemize}
 
-What about a deceleration in a major, i.e. $ \Delta_{m,t+1\to t+2}  - \Delta_{m,t\to t+1} > 0$? This could be due to:
-\begin{itemize}
-   \item If inflow growth slows or outflow growth speeds up (e.g., a bulge graduating, rising switch-outs, rising leaves, or fewer new declarants than last year).
-\end{itemize}
-appens 
+Micro data would allow me to disentangle these, however. This is purchasable for less than \$1000, but I need to define the student target population (and provide names).
+% For example, the Texas ERC has this. 
+% What about a deceleration in a major, i.e. $ \Delta_{m,t+1\to t+2}  - \Delta_{m,t\to t+1} > 0$? This could be due to:
+% \begin{itemize}
+%    \item If inflow growth slows or outflow growth speeds up (e.g., a bulge graduating, rising switch-outs, rising leaves, or fewer new declarants than last year).
+% \end{itemize}
 
 
-I cannot separate these without a panel of micro data, but it's useful to be clear on where variation could come from. 
-
-\subsection{Aggregates}
-I have aggregates. In fact, at the state-level, but I am not sure what I would do with states. 
-\subsection{Micro Data}
-Not sure that I need this, although literally aggregating to the year-level, like I am doing now seems too coarse; we're talking basically 5 datapoints (for each major). Seeing it at the institution level would be cool (E.g. are people just dropping CS majors at good colleges). For about \$1000 they will give you enrollment data for any list of students. But as far as I can tell, there is no prodcut for just ``all students''.
-
-\subsection{Three sources of measurement error \citep{dynarski2013missing}}
-\textbf{Matching Errors}. To get student-level data, NSC has to match its records to those from other data sources. So there will inevitably be match errors between those. 
-\textbf{Roverage (both across and within universities)}
 
 
-\textit{Across universities}: The NSC does not get enrollment numbers from all universities. This means totals will not match the true number of college students.  ``As of fall 2011, the NSC reports that they cover 93 percent of postsecondary enrollment.'' \citep{dynarski2013missing}. This number is up to 97\% now as of 2025.\\
-\textit{Within universities}: ``It is not necessarily reasonable to assume that NSC participating institutions report degree information for all of their students''
-\textbf{FERPA blockage} `` FERPA is a federal law that protects the privacy of student education 
-records. The law applies to all schools that receive funds from the U.S. Department of Education.
-Under FERPA, both students and schools can block their enrollment and degree information.
-So, NSC cannot release student-level information if the record is “FERPA-blocked.” ''
+%but it's useful to be clear on where variation could come from. 
 
-\subsection{RPS}
-
-\subsection{ACS}
-At least a 2-year lag. And doesn't even include enrollments, as far as I can tell. 
-\subsection{IPEDS}
-Roughly a 1-year lag. ``For example, the most recent data release on September 23, 2025, included provisional data from the Fall 2024 data collection''
-This is more comprehensive than 
-
-\subsection{Sational Survey of College Graduates}
-This data is biennial. 
-
-\section{Analyses}
 \subsection{How to define AI-exposed majors.}
 %Timmerman does something similar here. I would not view this step as economics, but it is, AFAIK, novel within the NSC data.
 
@@ -179,17 +156,18 @@ We calculate a static measure of AI exposure by college major. Doing so requires
    \end{tabular}
    
    \end{table}
-   Since ACS uses FOD (Field of Degree) codes while enrollment data uses CIP (4-digit Classification of Instructional Programs) codes, we harmonize using a many-to-many NCES crosswalk (ii) weight by empirical enrollment shares in each CIP when an ACS FOD maps to many CIPs. 
+
+   On calculation of $w_{i,c}$:
+
+   Since ACS uses FOD (Field of Degree) codes while enrollment data uses CIP (4-digit Classification of Instructional Programs) codes, I harmonize using a many-to-many NCES crosswalk, and then (ii) weight by empirical enrollment shares in each CIP when an ACS FOD maps to many CIPs. 
    
-   This all goes into the calculation of  $w_{i,c}$.
 
-   For example, if a FOD maps to multiple CIPs, which we denote $\text{CIP}(FOD_i)$, then we split that person using empirical enrollment shares in each of those CIPs, from 2023. \text{PERWT}i is the normal person weight from ACS. 
+   For example, if a FOD maps to multiple CIPs, which we denote $\text{CIP}(FOD_i)$, then we split that person using empirical enrollment shares in each of those CIPs, from 2023. \text{PERWT}i is the  person weight from ACS. 
 
    
-$w_{i,c} = \text{PERWT}_i \times \frac{\text{Enrollment}_c}{\sum_{c' \in \text{CIP}(FOD_i)} \text{Enrollment}_{c'}}$
-
+$$w_{i,c} = \text{PERWT}_i \times \frac{\text{Enrollment}_c}{\sum_{c' \in \text{CIP}(FOD_i)} \text{Enrollment}_{c'}}$$
 \subsubsection{Is AI exposure the measure we want?}
-One challenging thing is whether we are looking under the lamp post with an easy-to-get measure of AI-induced unemployment . But the Felten et al measure is not designed to capture that, as they say, ``we remain agnostic to whether occupational exposure to generative AI is likely to result in automation vs. augmentation of occupations''. \\
+One challenging thing is whether we are looking under the lamp post with an easy of AI-induced unemployment. But the Felten et al measure is \textbf{not} designed to capture automation risk, as they say, ``we remain agnostic to whether occupational exposure to generative AI is likely to result in automation vs. augmentation of occupations''. \\
 
 
 \subsection{Descriptives}
@@ -202,14 +180,13 @@ One challenging thing is whether we are looking under the lamp post with an easy
       \caption{Enrollment by AI occupational exposure over time. Data from NSC.}
       \label{fig:cs_enrollment}
 \end{figure}
-Qualitatively, we see a deceleration in computer science and computationar and information sciencebetween 2024 and 2025, as reported on in the popular press. 
-But other trends that are likely unrelated to AI, and have been occuring since at least 2019, e.g. the continued decline in Communication (high AI exposure) and Criminal Justice (low AI exposure) majors. 
+We see a deceleration in computer science and computational and information science between 2024 and 2025, as reported on in the popular press.
 
-\textcolor{red}{Try to get Spring and fall numbers for each this; in principle, this double your sample size within major}
+But, other trends, unrelated to generative AI, have also been occuring. For example, the secular decline in Communication majors (high AI exposure) and Criminal Justice (low AI exposure) majors, which has been occuring since at least 2019.  
 
 \subsubsection{Wages by AI exposure over time}
-\textcolor{red}{be careful about when you measure wages here. Need it to be recent enough to be useful and whether you want this at the college major level or the occupation level. }\\
 The most recent wage $\times$ major data is the 2024 ACS data. 
+
 
 
 
@@ -330,4 +307,30 @@ Are we too early for this to be studied concretely? A few extra years might make
 
 
 \bibliography{references}
+
+\appendix
+
+\subsection{Three sources of measurement error \citep{dynarski2013missing}}
+\textbf{Matching Errors}. To get student-level data, NSC has to match its records to those from other data sources. So there will inevitably be match errors between those. 
+\textbf{Roverage (both across and within universities)}
+
+
+\textit{Across universities}: The NSC does not get enrollment numbers from all universities. This means totals will not match the true number of college students.  ``As of fall 2011, the NSC reports that they cover 93 percent of postsecondary enrollment.'' \citep{dynarski2013missing}. This number is up to 97\% now as of 2025.\\
+\textit{Within universities}: ``It is not necessarily reasonable to assume that NSC participating institutions report degree information for all of their students''
+\textbf{FERPA blockage} `` FERPA is a federal law that protects the privacy of student education 
+records. The law applies to all schools that receive funds from the U.S. Department of Education.
+Under FERPA, both students and schools can block their enrollment and degree information.
+So, NSC cannot release student-level information if the record is “FERPA-blocked.” ''
+
+\subsection{RPS}
+
+\subsection{ACS}
+At least a 2-year lag. And doesn't even include enrollments, as far as I can tell. 
+\subsection{IPEDS}
+Roughly a 1-year lag. ``For example, the most recent data release on September 23, 2025, included provisional data from the Fall 2024 data collection''
+This is more comprehensive than 
+
+\subsection{Sational Survey of College Graduates}
+This data is biennial. 
+
 \end{document}

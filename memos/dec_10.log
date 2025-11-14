@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  14 NOV 2025 14:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  14 NOV 2025 14:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -658,96 +658,99 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--85
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 93.
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 98.
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 93.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
  (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 98.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 98.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 98.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 98.
 
 
 
 [2]
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 122.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\let' on input line 122.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 122.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\NAT@ctype' on input line 122.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 122.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\let' on input line 122.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 122.
+ []
 
 
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+</Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png, id=159, 1577.6541pt x 495.7722pt>
+File: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png Graphic file (type png)
+<use /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>
+Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png  used on input line 179.
+(pdftex.def)             Requested size: 469.75502pt x 147.62076pt.
+
+
+[4 </Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>]
+
+LaTeX Warning: Reference `eq:indiff' on page 5 undefined on input line 242.
+
+
+
+[5]
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 303--306
 
  []
 
+(./dec_10.bbl)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\begingroup' on input line 313.
 
 
-[4]
-</Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png, id=176, 1433.5959pt x 413.6253pt>
-File: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png Graphic file (type png)
-<use /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>
-Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png  used on input line 201.
-(pdftex.def)             Requested size: 469.75502pt x 135.53743pt.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\let' on input line 313.
 
 
-[5 </Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 313.
 
-[6]
 
-LaTeX Warning: Reference `eq:indiff' on page 7 undefined on input line 265.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\NAT@ctype' on input line 313.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 313.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\let' on input line 313.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\new@ifnextchar' on input line 313.
 
 
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 326--329
 
- []
-
-(./dec_10.bbl
-
-[8])
-
-[9] (./dec_10.aux)
+[8] (./dec_10.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -757,21 +760,21 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `dec_10.out' has not changed.
-(rerunfilecheck)             Checksum: 7B0F1668D4ABA6CA3DDAD6016EFA3E1A;5299.
+(rerunfilecheck)             Checksum: E25574CA4F3C9A3737A387C385EC6B8B;5013.
  ) 
 Here is how much of TeX's memory you used:
- 24365 strings out of 469220
- 451424 string characters out of 5462268
+ 24360 strings out of 469220
+ 451408 string characters out of 5462268
  915946 words of memory out of 5000000
- 52395 multiletter control sequences out of 15000+600000
+ 52393 multiletter control sequences out of 15000+600000
  639240 words of font info for 84 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 84i,17n,87p,746b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </Users/jeffreyohl/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dec_10.pdf (9 pages, 972804 bytes).
+ 84i,17n,87p,746b,518s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/jeffreyohl/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on dec_10.pdf (8 pages, 982272 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 244 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 258 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 289 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 242 words of extra memory for PDF output out of 10000 (max. 10000000)
 
