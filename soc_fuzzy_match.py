@@ -112,3 +112,75 @@ def fuzzy_match_soc_codes(acs_with_cip: pd.DataFrame, felten: pd.DataFrame) -> p
             print(f"  {code:8s}: {count:,} observations")
 
     return acs_with_cip
+
+
+def generate_fuzzy_match_diagnostic(acs_with_exposure: pd.DataFrame, top_n_cip4s: list = None) -> None:
+    """
+    Generate detailed diagnostic report for fuzzy matching for specific CIP4 codes.
+
+    Shows what SOC codes are being matched (exact vs fuzzy) for top declining majors.
+
+    Parameters:
+    -----------
+    acs_with_exposure : DataFrame with CIP4, soc_clean, AIOE, weight_split
+    top_n_cip4s : list of CIP4 codes to examine (or None to show top 10 by weight)
+    """
+    print("\n" + "="*70)
+    print("FUZZY MATCHING DIAGNOSTIC (Top Majors)")
+    print("="*70)
+
+    if top_n_cip4s is None:
+        # Get top 10 CIP4s by total weight
+        top_cip4s_df = acs_with_exposure.groupby('CIP4').agg({
+            'weight_split': 'sum',
+            'CIP4_title': 'first'
+        }).sort_values('weight_split', ascending=False).head(10)
+        top_n_cip4s = top_cip4s_df.index.tolist()
+
+    for cip4 in top_n_cip4s:
+        cip_data = acs_with_exposure[acs_with_exposure['CIP4'] == cip4]
+
+        if len(cip_data) == 0:
+            continue
+
+        cip_title = cip_data['CIP4_title'].iloc[0] if 'CIP4_title' in cip_data.columns else ''
+        total_weight = cip_data['weight_split'].sum()
+
+        print(f"\n{'='*70}")
+        print(f"CIP4: {cip4} - {cip_title[:50]}")
+        print(f"Total weight: {total_weight:,.0f}")
+        print(f"{'='*70}")
+
+        # Get top SOC codes by weight for this CIP4
+        soc_summary = cip_data.groupby('soc_clean').agg({
+            'weight_split': 'sum',
+            'AIOE': 'first'
+        }).sort_values('weight_split', ascending=False).head(10)
+
+        print(f"\nTop 10 occupations (SOC codes) for this major:")
+        print(f"{'SOC Code':<12} {'Weight':<15} {'AIOE':<10} {'Type'}")
+        print("-" * 70)
+
+        for soc_code, row in soc_summary.iterrows():
+            weight = row['weight_split']
+            aioe = row['AIOE']
+            weight_pct = (weight / total_weight * 100) if total_weight > 0 else 0
+
+            # Determine match type
+            is_masked = bool(re.search(r'[XY]+', str(soc_code).upper()))
+            is_round = str(soc_code).endswith(('00', '000'))
+
+            if is_masked:
+                match_type = "Fuzzy (masked)"
+            elif is_round:
+                match_type = "Fuzzy (aggreg)"
+            else:
+                match_type = "Exact"
+
+            print(f"{soc_code:<12} {weight:>10,.0f} ({weight_pct:>4.1f}%)  {aioe:>6.3f}   {match_type}")
+
+        # Show mean AIOE for this CIP4
+        mean_aioe = np.average(cip_data['AIOE'], weights=cip_data['weight_split'])
+        print(f"\nWeighted mean AIOE for {cip4}: {mean_aioe:.3f}")
+
+    print("\n" + "="*70)

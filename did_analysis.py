@@ -5,19 +5,28 @@
 import pandas as pd
 import numpy as np
 
-def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
+def run_did_analysis(df: pd.DataFrame, output_dir: str, base_year: int = 2019) -> pd.DataFrame:
     """
     Run Difference-in-Differences analysis comparing high vs low AI exposure terciles.
 
     Specification:
     - Treatment: High AI exposure tercile (vs Low tercile baseline)
-    - Post-period: 2025 (vs 2019-2024 pre-period)
+    - Post-period: 2025 (vs base_year-2024 pre-period)
     - Outcome: log(enrollment)
     - Weights: Enrollment (larger majors weighted more heavily)
     - Controls: Wage quartiles, year fixed effects
 
     This ensures "people" (enrollment) is the unit of observation, not just majors.
     Small heterogeneous majors with 14 people don't dominate the results.
+
+    Parameters:
+    -----------
+    df : pd.DataFrame
+        Dataset with enrollment, exposure, and wage data
+    output_dir : str
+        Directory to save results
+    base_year : int
+        Base year for wage data (default 2019)
     """
     print("\n" + "="*70)
     print("DIFFERENCE-IN-DIFFERENCES ANALYSIS")
@@ -149,28 +158,29 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
         print(f"  Coefficient: {did_coef_wage:.4f}")
         print(f"  Std Error: {did_se_wage:.4f}")
         print(f"  P-value: {did_pval_wage:.4f}")
-        print(f"  Interpretation: Conditional on 2019 wages, high AI exposure majors")
+        print(f"  Interpretation: Conditional on {base_year} wages, high AI exposure majors")
         print(f"                  had {did_coef_wage*100:.2f}% differential enrollment growth")
         print("="*70)
 
-        # Save results
-        results = pd.DataFrame({
-            'specification': ['Basic DiD', 'Wage-Controlled DiD'],
-            'coefficient': [did_coef, did_coef_wage],
-            'std_error': [did_se, did_se_wage],
-            'p_value': [did_pval, did_pval_wage],
-            'n_obs': [len(df_did_reg), len(df_wage_reg)],
-            'n_majors': [df_did_reg['CIP4'].nunique(), df_wage_reg['CIP4'].nunique()]
-        })
+        # Save regression tables as LaTeX (publication-ready)
+        print("\n" + "="*70)
+        print("SAVING PUBLICATION-READY LATEX TABLES")
+        print("="*70)
 
-        results.to_csv(f'{output_dir}/did_results.csv', index=False)
-        print(f"\n✓ Saved DiD results to {output_dir}/did_results.csv")
+        # Save individual model summaries as LaTeX
+        with open(f'{output_dir}/did_table1_basic.tex', 'w') as f:
+            f.write(model_basic.summary().as_latex())
+        print(f"✓ Saved basic DiD table to {output_dir}/did_table1_basic.tex")
+
+        with open(f'{output_dir}/did_table2_wage_controls.tex', 'w') as f:
+            f.write(model_wage.summary().as_latex())
+        print(f"✓ Saved wage-controlled DiD table to {output_dir}/did_table2_wage_controls.tex")
 
         # Specification 3: DiD on Year-over-Year Growth Rates
         print("\n\n[3] GROWTH RATE DiD: YoY enrollment growth ~ treat × post + log(wage)")
         print("    Weights: enrollment")
         print("    Outcome: Year-over-year % growth rate")
-        print("    Control: Log 2019 wage level")
+        print(f"    Control: Log {base_year} wage level")
         print("-" * 70)
 
         # Calculate YoY growth rates
@@ -179,15 +189,15 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
         df_growth['growth_rate'] = ((df_growth['enrollment'] - df_growth['enrollment_lag']) /
                                      df_growth['enrollment_lag'] * 100)
 
-        # Drop 2019 (no prior year to calculate growth)
-        df_growth = df_growth[df_growth['year'] > 2019].copy()
+        # Drop base_year (no prior year to calculate growth)
+        df_growth = df_growth[df_growth['year'] > base_year].copy()
 
         # Redefine post (now 2025 vs 2020-2024)
         df_growth['post'] = (df_growth['year'] == 2025).astype(int)
         df_growth['treat_x_post'] = df_growth['treat'] * df_growth['post']
 
         # Build formula with log wage control (no year FE)
-        formula_growth = f'growth_rate ~ treat + post + treat_x_post + log_mean_wage_2019'
+        formula_growth = f'growth_rate ~ treat + post + treat_x_post + log_mean_wage_{base_year}'
 
         # Run WLS on growth rates (weight by enrollment)
         model_growth = wls(formula_growth, data=df_growth, weights=df_growth['enrollment']).fit()
@@ -208,17 +218,58 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
         print(f"                  higher YoY growth in 2025 vs 2020-2024")
         print("="*70)
 
-        # Add to results
-        results = pd.concat([results, pd.DataFrame({
-            'specification': ['Growth Rate DiD'],
-            'coefficient': [did_coef_growth],
-            'std_error': [did_se_growth],
-            'p_value': [did_pval_growth],
-            'n_obs': [len(df_growth)],
-            'n_majors': [df_growth['CIP4'].nunique()]
-        })], ignore_index=True)
+        # Save growth rate model as LaTeX
+        with open(f'{output_dir}/did_table3_growth_rate.tex', 'w') as f:
+            f.write(model_growth.summary().as_latex())
+        print(f"\n✓ Saved growth rate DiD table to {output_dir}/did_table3_growth_rate.tex")
 
-        return results
+        # Create a combined summary table (all three specs side-by-side)
+        try:
+            from statsmodels.iolib.summary2 import summary_col
+
+            results_combined = summary_col(
+                [model_basic, model_wage, model_growth],
+                model_names=['(1)\nBasic DiD', '(2)\nWage Controls', '(3)\nGrowth Rate'],
+                stars=True,
+                float_format='%.4f',
+                info_dict={
+                    'N': lambda x: f"{int(x.nobs):,}",
+                    'R-squared': lambda x: f"{x.rsquared:.3f}",
+                    'Weighted': ['Yes', 'Yes', 'Yes']
+                }
+            )
+
+            with open(f'{output_dir}/did_table_combined.tex', 'w') as f:
+                f.write(results_combined.as_latex())
+            print(f"✓ Saved combined DiD table to {output_dir}/did_table_combined.tex")
+
+        except Exception as e:
+            print(f"⚠ Could not create combined table: {e}")
+
+        # Also create a simple summary CSV for reference
+        results_summary = pd.DataFrame({
+            'specification': ['Basic DiD', 'Wage-Controlled DiD', 'Growth Rate DiD'],
+            'coefficient': [did_coef, did_coef_wage, did_coef_growth],
+            'std_error': [did_se, did_se_wage, did_se_growth],
+            'p_value': [did_pval, did_pval_wage, did_pval_growth],
+            'n_obs': [len(df_did_reg), len(df_wage_reg), len(df_growth)],
+            'n_majors': [df_did_reg['CIP4'].nunique(), df_wage_reg['CIP4'].nunique(), df_growth['CIP4'].nunique()]
+        })
+
+        results_summary.to_csv(f'{output_dir}/did_results_summary.csv', index=False)
+        print(f"✓ Saved summary CSV to {output_dir}/did_results_summary.csv")
+
+        print("\n" + "="*70)
+        print("LATEX TABLE FILES CREATED:")
+        print("="*70)
+        print(f"  1. {output_dir}/did_table1_basic.tex")
+        print(f"  2. {output_dir}/did_table2_wage_controls.tex")
+        print(f"  3. {output_dir}/did_table3_growth_rate.tex")
+        print(f"  4. {output_dir}/did_table_combined.tex (all specs)")
+        print(f"\n  Reference CSV: {output_dir}/did_results_summary.csv")
+        print("="*70)
+
+        return results_summary
 
     except ImportError:
         print("\n⚠ statsmodels not available - running manual DiD calculation")
@@ -268,7 +319,34 @@ def run_did_analysis(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
             'low_post': [low_post_mean]
         })
 
-        results.to_csv(f'{output_dir}/did_results.csv', index=False)
-        print(f"\n✓ Saved DiD results to {output_dir}/did_results.csv")
+        results.to_csv(f'{output_dir}/did_results_manual.csv', index=False)
+        print(f"\n✓ Saved DiD results to {output_dir}/did_results_manual.csv")
+
+        # Create a simple LaTeX table for manual DiD
+        latex_table = r'''\begin{table}[htbp]
+\centering
+\caption{Difference-in-Differences Estimation: AI Exposure and Enrollment Growth}
+\label{tab:did_manual}
+\begin{tabular}{lcc}
+\hline\hline
+& High AI Exposure & Low AI Exposure \\
+\hline
+Pre-period (2019--2024) & %.4f & %.4f \\
+Post-period (2025) & %.4f & %.4f \\
+Difference (Post - Pre) & %.4f & %.4f \\
+\hline
+DiD Estimate & \multicolumn{2}{c}{%.4f} \\
+ & \multicolumn{2}{c}{(%.2f\%%)} \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize Outcome: Log enrollment (weighted by enrollment)} \\
+\multicolumn{3}{l}{\footnotesize DiD = (High Post - High Pre) - (Low Post - Low Pre)} \\
+\end{tabular}
+\end{table}
+''' % (high_pre_mean, low_pre_mean, high_post_mean, low_post_mean,
+       high_diff, low_diff, did_estimate, did_estimate * 100)
+
+        with open(f'{output_dir}/did_table_manual.tex', 'w') as f:
+            f.write(latex_table)
+        print(f"✓ Saved LaTeX table to {output_dir}/did_table_manual.tex")
 
         return results
