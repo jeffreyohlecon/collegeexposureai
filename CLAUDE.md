@@ -734,3 +734,50 @@ create_tercile_deepdive_plots(df_final, f'{OUTPUT_DIR}/enrollment_tercile_deepdi
 - Separate by 2-year vs 4-year institutions
 - Show absolute enrollment alongside % change
 - Highlight specific majors of interest 
+
+---
+
+## Latest Updates (November 19, 2025)
+
+### Fixed Column Reference Errors
+
+**Issue 1: Missing CIP4_title Column**
+- **Problem**: Multiple plotting functions expected `CIP4_title` but it wasn't consistently preserved
+- **Solution**: Added defensive checks in 3 locations:
+  - `create_wage_tercile_plots()`: Added fallback logic to get CIP4_title from df_wages if not in df_exposure
+  - All plotting functions: Check column exists before accessing: `if 'CIP4_title' in cip_data.columns`
+- **Commit**: 7f3577a "Fix CIP4_title missing column error in wage tercile plots"
+
+**Issue 2: Hardcoded Wage Column Name**
+- **Problem**: `merge_enrollment_exposure_wages()` had hardcoded `'mean_wage_2019'` references
+- **Actual column**: `'mean_wage_2015'` (based on `base_year_label='2015'` parameter)
+- **Solution**: Replaced 4 instances with f-string: `f'mean_wage_{base_year_label}'`
+- **Affected**: n_matched_wages calculation, missing_wage_cips check, wage_quartile creation
+- **Commit**: 6b7a02e "Fix hardcoded wage column references to use base_year_label parameter"
+
+### Replaced Wage Tercile Plot with Scatter Plot
+
+**Motivation**: Since we only have one year of wage data (pooled 2013-2017 ACS), a time-series tercile plot doesn't make sense.
+
+**Changes**:
+- **Removed**: `create_wage_tercile_plots()` (192 lines, created 3-panel time-series plot)
+- **Added**: `create_wage_aioe_scatter()` (85 lines, creates scatter plot)
+- **New visualization shows**:
+  - X-axis: AI Exposure Score (AIOE)
+  - Y-axis: Mean Wage (2013-2017)
+  - Each point: One major (369 CIP4 codes)
+  - No individual labels (too many points)
+  - Red regression line
+  - Correlation statistics (Pearson r and Spearman ρ)
+  - Text box with correlation values and n
+  - Y-axis formatted as currency ($Xk)
+- **Output**: `wage_vs_aioe_scatter.png` instead of `wage_trends_by_ai_tercile.png`
+- **Function call**: Changed from `create_wage_tercile_plots(cip_wages_by_year, ...)` to `create_wage_aioe_scatter(cip_wages, ...)`
+- **Commit**: (pending)
+
+### Files Modified
+- `descriptives.ipynb`: All fixes applied, should now run without errors
+
+### Next Steps
+None - notebook should be ready to run end-to-end.
+

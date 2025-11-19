@@ -68,7 +68,7 @@ For example, in 2016, AI researcher Geoffrey Hinton, who would go on to win the 
 This idea is in the air among economists:  \citep{brynjolfsson2025canaries} released a paper on declining headcount of early career software developers and customer service employees since ChatGPT was launched.   In the conclusion, they speculate that ``The adoption of new technologies typically leads to heterogeneous effects across workers, resulting in an adjustment period as workers reallocate from displaced forms of work to new forms with growing labor demand (Autor et al., 2024). \textbf{ Such endogenous adjustment may already be happening with AI, with emerging evidence of shifts in college majors away from AI-exposed categories such
 as computer science.}''
 \section{Literature}
-\textcolor{red}{May skip this.}
+
 \subsection{College Major Choice Broadly}
 Altonji et al Handbook chapter (2016)
 Missing Manual, Dynarski et al, NBER WP (2013)
@@ -136,7 +136,7 @@ We calculate a static measure of AI exposure by college major. Doing so requires
    \midrule
    \multicolumn{2}{l}{\textit{Data Sources}} \\
    \quad (1) & \textbf{Occupation-level AI exposure}: Felten et al. (2023) Language Modeling AIOE scores for 774 SOC occupations \\
-   \quad (2) & \textbf{Occupation-major linkage}: IPUMS ACS 2013-2017 (5-year estimates) for ages 22-35, linking field of degree to current occupation. We use this vintage to ensure SOC code definitions align with those in Felten et al. (2021). \\
+   \quad (2) & \textbf{Occupation-major linkage}: IPUMS ACS 2013-2017 (5-year estimates) for ages 22-35, linking field of degree to current occupation. We use this vintage to ensure SOC code definitions align with those in Felten et al. (2023).\footnote{For the cases where the SOC is masked due to a small population (e.g. Nurse wives and Nurse Practitioners show up as 2911XX ), we take the median among the unmasked SOCs which that category could belong to in the Felten et al data.}  \\
    \quad (3) & \textbf{Enrollment data}: National Student Clearinghouse 2023 undergraduate enrollment by 4-digit CIP code \\
    \addlinespace
    \multicolumn{2}{l}{\textit{Construction of Major-Level AI Exposure}} \\
@@ -296,13 +296,13 @@ Ex post wages in the risky sector depend on realized demand, and the more confid
 
 $$\frac{\partial w_{r,H}}{\partial p_H} = \frac{(a_L - a_H)}{2b} < 0$$
 
- This is not a deviation from rational expectations, it is just that as $p_H \to 0$, entering a profession becomes more like a lottery ticket. This is the idea of a shortage of workers entering the risky profession, but wages rising ex post when the risk is not realized, (or - not modeled - if this is realized later than expected).  Running example here is radiologists.  So far, I think this is nothing new. This is the same idea as in finance there can be a ``bubble'' with rational expectations.
+ This is not a deviation from rational expectations, it is just that as $p_H \to 0$, entering a profession becomes more like a lottery ticket. This is the idea of a shortage of workers entering the risky profession, but wages rising ex post when the risk is not realized, (or - not modeled - if this is realized later than expected).  Running example here is radiologists.  This is the same idea, as in finance, there can be what looks like a ``bubble'' ex post, even with rational expectations.
 
 
 \section{Promise of this idea}
-I find area interesting, but it seems very crowded, and it is not obvious I have a strong advantage in data, etc.. Clearly many people are asking the question. \\ 
+I find this question interesting, but I am likely racing against other people\\ 
 Is this an interesting question even if there is a null result? It clearly seems more interesting if AI exposed majors were falling off a cliff.  \\
-Are we too early for this to be studied concretely? A few extra years might make this more convincing.  \\ 
+I also worry we are a little too early for this to be studied concretely. The bend on the CS major curve seems to be a 2024-25 phenomenon.  \\ 
 
 
 
