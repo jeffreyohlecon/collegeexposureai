@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  19 NOV 2025 17:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  24 NOV 2025 17:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -563,24 +563,24 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 ) (./dec_10.aux)
 \openout1 = `dec_10.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -604,8 +604,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 44.
- (./dec_10.out) (./dec_10.out)
+Package hyperref Info: Link coloring ON on input line 42.
 \@outlinefile=\write4
 \openout4 = `dec_10.out'.
 
@@ -645,7 +644,10 @@ Package hyperref Info: Link coloring ON on input line 44.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--79
+Package natbib Warning: Citation `brynjolfsson2025canaries' on page 1 undefined on input line 66.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--77
 
  []
 
@@ -654,130 +656,81 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--79
 [1
 
 {/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 83--85
+Underfull \hbox (badness 10000) in paragraph at lines 81--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 98.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 96.
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 96.
  (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 98.
+(hyperref)                removing `math shift' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 98.
+(hyperref)                removing `math shift' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 98.
+(hyperref)                removing `math shift' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 98.
+(hyperref)                removing `math shift' on input line 96.
 
 
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
 
 
 [3]
-</Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png, id=161, 1577.6541pt x 495.7722pt>
+</Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png, id=57, 1577.6541pt x 495.7722pt>
 File: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png Graphic file (type png)
 <use /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>
-Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png  used on input line 179.
+Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png  used on input line 177.
 (pdftex.def)             Requested size: 469.75502pt x 147.62076pt.
+</Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png, id=59, 787.2612pt x 570.4512pt>
+File: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png Graphic file (type png)
+<use /Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png>
+Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png  used on input line 190.
+(pdftex.def)             Requested size: 469.75502pt x 340.3845pt.
 
 
-[4 </Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>]
+! LaTeX Error: File `did_motivating_regression.tex' not found.
 
-LaTeX Warning: Reference `eq:indiff' on page 5 undefined on input line 242.
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
 
+Enter file name: 
+/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex:199: Emergency stop.
+<read *> 
+         
+l.199 \input{did_motivating_regression.tex}
+                                           ^^M
+*** (cannot \read from terminal in nonstop modes)
 
-
-[5]
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 303--306
-
- []
-
-(./dec_10.bbl)
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 313.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\let' on input line 313.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 313.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\NAT@ctype' on input line 313.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 313.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\let' on input line 313.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 313.
-
-
-
-[7]
-
-[8] (./dec_10.aux)
- ***********
-LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-09-02>
- ***********
-
-
-LaTeX Warning: There were undefined references.
-
-Package rerunfilecheck Info: File `dec_10.out' has not changed.
-(rerunfilecheck)             Checksum: E25574CA4F3C9A3737A387C385EC6B8B;5013.
- ) 
+ 
 Here is how much of TeX's memory you used:
- 24366 strings out of 469220
- 451465 string characters out of 5462268
+ 24282 strings out of 469220
+ 450501 string characters out of 5462268
  916946 words of memory out of 5000000
- 52396 multiletter control sequences out of 15000+600000
- 639885 words of font info for 87 fonts, out of 8000000 for 9000
+ 52349 multiletter control sequences out of 15000+600000
+ 639716 words of font info for 86 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 84i,19n,87p,746b,518s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
-
- </Users/jeffreyohl/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dec_10.pdf (8 pages, 982417 bytes).
-PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 238 compressed objects within 3 object streams
- 44 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 84i,19n,87p,747b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
+/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex:199:  ==> Fatal error occurred, no output PDF file produced!

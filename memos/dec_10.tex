@@ -1,5 +1,3 @@
-
-
 \documentclass[12pt]{article}
 \usepackage{threeparttable}
 \usepackage{booktabs}
@@ -184,16 +182,21 @@ We see a deceleration in computer science and computational and information scie
 
 But, other trends, unrelated to generative AI, have also been occuring. For example, the secular decline in Communication majors (high AI exposure) and Criminal Justice (low AI exposure) majors, which has been occuring since at least 2019.  
 
-\subsubsection{Wages by AI exposure over time}
-The most recent wage $\times$ major data is the 2024 ACS data. 
+\subsubsection{Wages by AI exposure}
+The most recent wage $\times$ major data which are compatible with the above SOC codes is the 2013-17 ACS data. 
 
-
+\begin{figure}
+   \centering
+   \includegraphics[width=\textwidth]{/Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png}
+   \caption{Enrollment by AI occupational exposure over time. Data from NSC.}
+   \label{fig:cs_enrollment}
+\end{figure}
 
 
 \subsection{Motivating DiDs}
-It seems like if anything was happening, it was not happening until this year. So we should not expect significant results. But these are the kinds of DiDs we might want to run. (Note, I have run these, and none of the results were significant)
-
+It seems like if anything was happening, it was not happening until this year, so I run a DiD just between 2024-5. I just cut the data into high and low AI exposure majors, and see if there is a differential change in enrollment, and enrollment growth rates.
 \subsection{DiD w.r.t. AI Exposure}
+\input{did_motivating_regression.tex}
 
 \subsection{DiD w.r.t. AI Exposure, controlling for wages}
 
@@ -204,11 +207,10 @@ It seems like if anything was happening, it was not happening until this year. S
 \section{A simple model of major choice in response to substitutes}
 The key features we desire in a model are:
 \begin{itemize}
-\item Two majors; roughly, one should be ``low-risk'', it pays off the same in each state, and one should be high-risk, it pays off nothing in the state you get automated in, and a lot otherwise.
-\item Think of this as nursing and computer science. 
-\item  This risk is basically macro-risk, not uncertainty about your own type. 
-\item Expectations about labor market outomes for each major; this need not be your expectation about right when you graduate, it could be further down the line. We could summarize this into a ``terminal value'', which compresses all future wages. 
-\item An ability to ``simulate'' what happens when expectations change.
+\item Two majors; roughly, one should be ``low-risk'', it pays off the same in each state, and one should be high-risk, it pays off little in the state you get automated in, and a lot otherwise.
+\item We could think of this as nursing and computer science. 
+\item The risk agents face is macro-risk to their profession, not uncertainty about your own type, which are sometimes studied. 
+\item Expectations about wages for each major.
 \item A delay between when you decide your major and get your first job (I am not sure this is important)
 \end{itemize}
 
@@ -296,13 +298,19 @@ Ex post wages in the risky sector depend on realized demand, and the more confid
 
 $$\frac{\partial w_{r,H}}{\partial p_H} = \frac{(a_L - a_H)}{2b} < 0$$
 
- This is not a deviation from rational expectations, it is just that as $p_H \to 0$, entering a profession becomes more like a lottery ticket. This is the idea of a shortage of workers entering the risky profession, but wages rising ex post when the risk is not realized, (or - not modeled - if this is realized later than expected).  Running example here is radiologists.  This is the same idea, as in finance, there can be what looks like a ``bubble'' ex post, even with rational expectations.
+ This is not a deviation from rational expectations, it is just that as $p_H \to 0$, entering a profession becomes more like a lottery ticket. This is the idea of a shortage of workers entering the risky profession, but wages rising ex post when the risk is not realized, (or - not modeled - if this is realized later than expected).  A running example here is radiologists.  This is the same idea, as in finance, there can be what looks like a ``bubble'' ex post, even with rational expectations.
 
 
 \section{Promise of this idea}
-I find this question interesting, but I am likely racing against other people\\ 
-Is this an interesting question even if there is a null result? It clearly seems more interesting if AI exposed majors were falling off a cliff.  \\
-I also worry we are a little too early for this to be studied concretely. The bend on the CS major curve seems to be a 2024-25 phenomenon.  \\ 
+
+\begin{itemize}
+\item   I find this question interesting, but I am likely racing against other people\\ 
+\item We are early for this to be studied empirically. The bend on the CS major curve seems to be a 2024-25 phenomenon. The current semester's data will be released in January 2026
+\item Is this an interesting question if there is a null result? It seems more interesting if AI exposed majors were falling off a cliff, as that would be evidence people think this technology will impact employment and wages in the professions of that major. Though, perhaps a null would be indicative that college students' beliefs are that AI won't really automate computer sciene jobs. 
+
+ 
+   
+\end{itemize}
 
 
 
@@ -330,7 +338,7 @@ At least a 2-year lag. And doesn't even include enrollments, as far as I can tel
 Roughly a 1-year lag. ``For example, the most recent data release on September 23, 2025, included provisional data from the Fall 2024 data collection''
 This is more comprehensive than 
 
-\subsection{Sational Survey of College Graduates}
+\subsection{National Survey of College Graduates}
 This data is biennial. 
 
 \end{document}
