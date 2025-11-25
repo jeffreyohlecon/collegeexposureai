@@ -165,7 +165,7 @@ We calculate a static measure of AI exposure by college major. Doing so requires
    
 $$w_{i,c} = \text{PERWT}_i \times \frac{\text{Enrollment}_c}{\sum_{c' \in \text{CIP}(FOD_i)} \text{Enrollment}_{c'}}$$
 \subsubsection{Is AI exposure the measure we want?}
-One challenging thing is whether we are looking under the lamp post with an easy of AI-induced unemployment. But the Felten et al measure is \textbf{not} designed to capture automation risk, as they say, ``we remain agnostic to whether occupational exposure to generative AI is likely to result in automation vs. augmentation of occupations''. \\
+The Felten et al measure is \textbf{not} designed to capture automation risk, as they say, ``we remain agnostic to whether occupational exposure to generative AI is likely to result in automation vs. augmentation of occupations''. \\
 
 
 \subsection{Descriptives}
@@ -188,19 +188,28 @@ The most recent wage $\times$ major data which are compatible with the above SOC
 \begin{figure}
    \centering
    \includegraphics[width=\textwidth]{/Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png}
-   \caption{Enrollment by AI occupational exposure over time. Data from NSC.}
-   \label{fig:cs_enrollment}
+   \caption{Wage vs. AI Occupational Exposure by Major. Each point represents a 4-digit CIP code. Wages are mean earnings from the 2013-2017 ACS for degree holders ages 22-35. AIOE scores are derived from Felten et al. (2023). Includes OLS regression line with slope, intercept, p-values, and R². Top 5 most populous majors are labeled.}
+   \label{fig:wage_aioe_scatter}
 \end{figure}
 
 
 \subsection{Motivating DiDs}
-It seems like if anything was happening, it was not happening until this year, so I run a DiD just between 2024-5. I just cut the data into high and low AI exposure majors, and see if there is a differential change in enrollment, and enrollment growth rates.
-\subsection{DiD w.r.t. AI Exposure}
-\input{did_motivating_regression.tex}
-
-\subsection{DiD w.r.t. AI Exposure, controlling for wages}
+It seems like if anything was happening, it was not happening until 2025. So I run a DiD with just two periods between 2024-5. 
+I cut the data into high and low AI exposure majors (above/below median AIOE), and test for differential changes in enrollment levels and enrollment growth rates. 
 
 
+
+This specificaiton is not well-motivated by any specific exogenous shock in 2024/2025. Most papers that try to do DiDs like this use the launch of Chat GPT on Nov 2022 as the shock, but it's pretty clear from the raw data we should not expect to see anything there. 
+
+Table \ref{tab:did_2024_2025} presents a simple difference-in-differences comparing 2024-2025 enrollment changes for high vs. low AI exposure majors. Columns (1)-(2) examine level changes (Enrollment$_{2025}$ - Enrollment$_{2024}$), while columns (3)-(4) examine growth acceleration (whether enrollment growth accelerated or decelerated relative to the prior year). Columns (2) and (4) add controls for log mean wages (2013-2017).
+
+. High AI exposure majors show slightly higher level growth (+297-302 students, p $>$ 0.10) but marginally significant growth \textit{acceleration} (+3.8 percentage points, p $<$ 0.10). With only one ``post-period'' and wide standard errors, these results should be interpreted cautiously.
+
+\input{/Users/jeffreyohl/Dropbox/CollegeMajorData/output/did_2024_2025.tex}
+
+Table \ref{tab:did_chatgpt} presents an alternative specification using the launch of ChatGPT (November 2022) as the treatment date. I compare average enrollment in the pre-period (2019-2022) to the post-period (2023-2025) for high vs. low AI exposure majors. While level changes show no significant differential (columns 1-2), growth rates reveal that high AI exposure majors grew 7.8 percentage points \textit{less} than low AI exposure majors (p $<$ 0.01). This result is robust to wage controls and suggests that, over the full post-ChatGPT period, enrollment shifted away from AI-exposed fields.
+
+\input{/Users/jeffreyohl/Dropbox/CollegeMajorData/output/did_chatgpt.tex}
 
 
 
@@ -241,10 +250,8 @@ Under risk neutrality, the following indifference in expected wages must hold, a
 We now quantify the distribution of majors, assume a mass 1 of students choose between the two majors, with $n_R$ choosing computer science, and $n_S = 1-n_R$ choosing nursing.
 
 \subsubsection{Completely Elastic Demand}
- We assume demand for employment in each degree is perfectly elastic at wage $w_R(H) > w_S > w_R(L)$. This fully pins down the equilibrium.  This means any split of majors, and in fact, any wages, are an equilibrium as long as Equation \ref{eq:indiff} is satisfied.
+If demand for employment in each degree is perfectly elastic at wage $w_R(H) > w_S > w_R(L)$, then these wages fully pin down the equilibrium.  This means any split of majors, and in fact, any wages, are an equilibrium as long as Equation \ref{eq:indiff} is satisfied.
 
- \subsubsection{Inelastic Demand}
- (I do not think you can have inelastic demand and inelastic supply without just assuming everything about the final eqm)
 
  \subsubsection{Partially Inelastic Demand}
 We now specify demand a little more narrowly, for all three majors we have a linear demand curve of the form
@@ -317,7 +324,7 @@ $$\frac{\partial w_{r,H}}{\partial p_H} = \frac{(a_L - a_H)}{2b} < 0$$
 \bibliography{references}
 
 \appendix
-
+\section{College Major Data}
 \subsection{Three sources of measurement error \citep{dynarski2013missing}}
 \textbf{Matching Errors}. To get student-level data, NSC has to match its records to those from other data sources. So there will inevitably be match errors between those. 
 \textbf{Roverage (both across and within universities)}
