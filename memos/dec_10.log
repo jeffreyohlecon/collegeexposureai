@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  24 NOV 2025 17:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.1)  25 NOV 2025 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -605,6 +605,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 42.
+ (./dec_10.out) (./dec_10.out)
 \@outlinefile=\write4
 \openout4 = `dec_10.out'.
 
@@ -642,9 +643,6 @@ Package hyperref Info: Link coloring ON on input line 42.
 * \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-
-Package natbib Warning: Citation `brynjolfsson2025canaries' on page 1 undefined on input line 66.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 74--77
@@ -699,38 +697,113 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
 
 [3]
-</Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png, id=57, 1577.6541pt x 495.7722pt>
+</Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png, id=153, 1577.6541pt x 495.7722pt>
 File: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png Graphic file (type png)
 <use /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>
 Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png  used on input line 177.
 (pdftex.def)             Requested size: 469.75502pt x 147.62076pt.
-</Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png, id=59, 787.2612pt x 570.4512pt>
+</Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png, id=155, 849.1725pt x 642.7212pt>
 File: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png Graphic file (type png)
 <use /Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png>
 Package pdftex.def Info: /Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png  used on input line 190.
-(pdftex.def)             Requested size: 469.75502pt x 340.3845pt.
+(pdftex.def)             Requested size: 469.75502pt x 355.54744pt.
+
+Overfull \hbox (3.83034pt too wide) in paragraph at lines 204--205
+[]\OT1/cmr/m/n/12 Table [][]2[][] presents a sim-ple difference-in-differences com-par-ing 2024-2025 en-roll-ment changes
+ []
 
 
-! LaTeX Error: File `did_motivating_regression.tex' not found.
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
+[4 </Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png>]
 
-Enter file name: 
-/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex:199: Emergency stop.
-<read *> 
-         
-l.199 \input{did_motivating_regression.tex}
-                                           ^^M
-*** (cannot \read from terminal in nonstop modes)
+[5 </Users/jeffreyohl/Dropbox/CollegeMajorData/output/wage_vs_aioe_scatter.png>] (/Users/jeffreyohl/Dropbox/CollegeMajorData/output/did_2024_2025.tex
+Underfull \hbox (badness 10000) in paragraph at lines 5--24
+[][]
+ []
 
- 
+) (/Users/jeffreyohl/Dropbox/CollegeMajorData/output/did_chatgpt.tex
+Underfull \hbox (badness 10000) in paragraph at lines 5--24
+[][]
+ []
+
+)
+
+[6]
+
+[7]
+
+LaTeX Warning: Reference `eq:indiff' on page 8 undefined on input line 253.
+
+
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
+
+ []
+
+
+
+[9] (./dec_10.bbl)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\begingroup' on input line 328.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\let' on input line 328.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 328.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\NAT@ctype' on input line 328.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 328.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\let' on input line 328.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\new@ifnextchar' on input line 328.
+
+
+
+[10]
+
+[11] (./dec_10.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `dec_10.out' has not changed.
+(rerunfilecheck)             Checksum: D24F7476B762785E75017FACAD1CD603;4454.
+ ) 
 Here is how much of TeX's memory you used:
- 24282 strings out of 469220
- 450501 string characters out of 5462268
- 916946 words of memory out of 5000000
- 52349 multiletter control sequences out of 15000+600000
- 639716 words of font info for 86 fonts, out of 8000000 for 9000
+ 24396 strings out of 469220
+ 452930 string characters out of 5462268
+ 922946 words of memory out of 5000000
+ 52414 multiletter control sequences out of 15000+600000
+ 640226 words of font info for 88 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 84i,19n,87p,747b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
-/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex:199:  ==> Fatal error occurred, no output PDF file produced!
+ 84i,19n,87p,746b,518s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
+
+ </Users/jeffreyohl/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </Users/jeffreyohl/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on dec_10.pdf (11 pages, 1366471 bytes).
+PDF statistics:
+ 307 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+
