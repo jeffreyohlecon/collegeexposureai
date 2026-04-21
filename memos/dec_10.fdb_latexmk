@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex dec_10"] 1764092990.24753 "dec_10.aux" "dec_10.bbl" "dec_10" 1764093141.49693 0
+["bibtex dec_10"] 1764092990.24753 "dec_10.aux" "dec_10.bbl" "dec_10" 1764366748.50959 0
   "./references.bib" 1763149855.99869 764 9577374eaee20394ab77a29e633fd764 ""
   "/usr/local/texlive/2025basic/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "dec_10.aux" 1764093141.32101 6121 20641f94356a615ec9b9b8bdfd3b4f27 "pdflatex"
+  "dec_10.aux" 1764366748.03057 6121 20641f94356a615ec9b9b8bdfd3b4f27 "pdflatex"
   (generated)
   "dec_10.bbl"
   "dec_10.blg"
   (rewritten before read)
-["pdflatex"] 1764093138.72016 "/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex" "dec_10.pdf" "dec_10" 1764093141.49709 0
-  "/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex" 1764093138.41574 20965 d0999c6ffbb3d091e3783906fe94919c ""
+["pdflatex"] 1764366741.97953 "/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex" "dec_10.pdf" "dec_10" 1764366748.51877 0
+  "/Users/jeffreyohl/Documents/GitHub/collegeexposureai/memos/dec_10.tex" 1764366740.12878 20963 0c4370d481affaed58d668f663f656b5 ""
   "/Users/jeffreyohl/Dropbox/CollegeMajorData/output/did_2024_2025.tex" 1764092911.81875 1152 5e7e734851e93e0f1919518ffb931687 ""
   "/Users/jeffreyohl/Dropbox/CollegeMajorData/output/did_chatgpt.tex" 1764092911.83317 1325 f400f60d44892f8d7159eaaaa70dcef0 ""
   "/Users/jeffreyohl/Dropbox/CollegeMajorData/output/enrollment_tercile_deepdive.png" 1764092907.30375 816734 5d6dac7c350cfa5b99a5ff6117cad105 ""
@@ -203,10 +203,10 @@
   "/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1759325201 79187 04b17f8738f833a5a5f7867124477b59 ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1759325246 2959258 b627f00692cd1eae1178f0ddedb5ecb5 ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
-  "dec_10.aux" 1764093141.32101 6121 20641f94356a615ec9b9b8bdfd3b4f27 "pdflatex"
+  "dec_10.aux" 1764366748.03057 6121 20641f94356a615ec9b9b8bdfd3b4f27 "pdflatex"
   "dec_10.bbl" 1764092990.26886 1017 f954f18c8a692875154fb5436f73998c "bibtex dec_10"
-  "dec_10.out" 1764093141.3218 4454 d24f7476b762785e75017facad1cd603 "pdflatex"
-  "dec_10.tex" 1764093138.41574 20965 d0999c6ffbb3d091e3783906fe94919c ""
+  "dec_10.out" 1764366748.03458 4454 d24f7476b762785e75017facad1cd603 "pdflatex"
+  "dec_10.tex" 1764366740.12878 20963 0c4370d481affaed58d668f663f656b5 ""
   (generated)
   "dec_10.aux"
   "dec_10.log"
